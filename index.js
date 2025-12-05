@@ -12,7 +12,9 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.path} - ${new Date().toLocaleString('pt-PT')}`);
   next();
 });
-
+app.get('/', (req, res) => {
+  res.send('API do restaurante a correr');
+});
 // Rota protegida (teste da autenticação Basic)
 app.get('/private', authMiddleware, (req, res) => {
   res.send('Acesso autorizado! Bem-vindo, ' + req.user.username);
